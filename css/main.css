@@ -25,3 +25,11 @@
     font-size: 100%;
     background-color: #fff;
   }
+
+  .width45 {
+    width: 600px;
+  }
+
+  a.imageinfo, a.outlineLay, a.compname, a.outlinecomp, a.metainfo {
+    cursor: pointer;
+  }
