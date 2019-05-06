@@ -41,25 +41,43 @@ function absolutePosition(el) {
     // just place a div at top right
     var body = document.querySelector('body');
     var table = document.createElement('table');
-    table.style.cssText = 'position:absolute;top:0;left:0;z-index:1001;background:#fff;border:1px solid #000';
+    table.style.cssText = 'position:absolute;top:0;left:0;z-index:1001;background:#fff;border:2px solid #ee6e73';
     var tbody = document.createElement('tbody');
     var $tr = document.createElement('tr');
-    $tr.style.cssText = 'border-bottom: 1px solid #000';
+    $tr.style.cssText = 'border-bottom: 1px solid #ee6e73;';
     var $td = document.createElement('td');
+    $td.style.cssText = 'border-right: 1px solid #ee6e73;padding: 15px;';
     var fragment = document.createDocumentFragment();
+    
 
-    [].forEach.call(document.querySelectorAll('img'), function (img) {
+    var htr = $tr.cloneNode();
+    var htd1 = $td.cloneNode();
+    var htd2 = $td.cloneNode();
+    var htd3 = $td.cloneNode();
+
+    htd1.textContent = 'Image'
+    htd2.textContent = 'Alt'
+    htd3.textContent = 'Data src'
+    htr.appendChild(htd1);
+    htr.appendChild(htd2);
+    htr.appendChild(htd3);
+    fragment.appendChild(htr);
+
+    [].forEach.call(document.querySelectorAll('main img'), function (img) {
         var tr = $tr.cloneNode();
         var td1 = $td.cloneNode();
         var td2 = $td.cloneNode();
+        var td3 = $td.cloneNode();    
         var image = document.createElement('img');
-        image.style.width = '150px';
+        image.style.width = '200px';
         image.style.height = 'auto';
         image.src = img.src;
         td1.appendChild(image);
         td2.textContent = img.alt || 'No alt found';
+        td3.innerHTML = img.parentElement.dataset.src ? ('<pre><code>' + JSON.stringify(JSON.parse(img.parentElement.dataset.src), null, 2) + '</code></pre>') : 'No Data src found';
         tr.appendChild(td1);
         tr.appendChild(td2);
+        tr.appendChild(td3);
         fragment.appendChild(tr);
 
         // imgRect = img.getBoundingClientRect();
@@ -74,7 +92,7 @@ function absolutePosition(el) {
         // wrapper.appendChild(tip);
 
         // // img.parentNode.insertBefore(tip, img.nextSibling);
-        // body.appendChild(tip);
+ 10       // body.appendChild(tip);
     });
 
     tbody.appendChild(fragment);

@@ -38,10 +38,11 @@ btn.addEventListener('click', function () {
 });
 
 var btn1 = document.getElementById('getLayout');
-btn1.addEventListener('click', function () {
+btn1.addEventListener('click', function () {  
+  window.layoutApplied = true;
   chrome.tabs.query({ active: true }, function (tabs) {
     var tab = tabs[0];
-    tab_title = tab.title;
+    tab_title = tab.title;    
     chrome.tabs.executeScript(tab.id, {
       file: 'js/getlayout.js'
     }, display_h1);
@@ -50,7 +51,8 @@ btn1.addEventListener('click', function () {
 });
 
 var btn2 = document.getElementById('outlinecomp');
-btn2.addEventListener('click', function () {
+btn2.addEventListener('click', function () {  
+  window.componentApplied = true;
   chrome.tabs.query({ active: true }, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
