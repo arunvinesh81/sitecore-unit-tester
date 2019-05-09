@@ -1,6 +1,6 @@
 # SiteCore Wep2.0 Unit Tester
 
-This Chrome Extension is used to test pages which was created by CMS Sitecore
+This Chrome Extension is used to test pages which was created by CMS Sitecore Wep 2.0
 
 ## Image Info
 1. Image src
@@ -15,10 +15,15 @@ This Chrome Extension is used to test pages which was created by CMS Sitecore
 5. OG: Description
 
 ## Link Info
-1. Link information
+1. Hyperink information
+
+## Video Info
+1. Show URL of Youtube
+2. Show ID of BrightCove video
 
 ## Outline component
 1. Outline around the component 
+2. Blank Placeholder
 
 ## Outline Layout
 1. Outline around the layout
@@ -30,4 +35,3 @@ This Chrome Extension is used to test pages which was created by CMS Sitecore
 
 ## Accordion Data
 1. Collapse Accordion
-2. Get Accordion Data

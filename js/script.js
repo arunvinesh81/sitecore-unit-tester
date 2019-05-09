@@ -7,11 +7,6 @@ $(document).ready(function(){
   $('ul.tabs').tabs;
 });
 
-/*document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.modal');
-  var instances = M.Modal.init(elems, 0.5);
-});*/
-
 
 var tab_title = '';
 function display_h1(results) {
@@ -88,3 +83,26 @@ btn4.addEventListener('click', function () {
 
 });
 
+var btn6 = document.getElementById('AcdExpand');
+btn6.addEventListener('click', function () {
+  chrome.tabs.query({ active: true }, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/expandAccordion.js'
+    }, display_h1);
+  });
+
+});
+
+var btn7 = document.getElementById('getVid');
+btn7.addEventListener('click', function () {
+  chrome.tabs.query({ active: true }, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getVideo.js'
+    }, display_h1);
+  });
+
+});
