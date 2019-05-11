@@ -1,9 +1,9 @@
 /* tab  */
 
-$(document).ready(function(){
+$(document).ready(function () {
   $('ul.tabs').tabs();
 });
-$(document).ready(function(){
+$(document).ready(function () {
   $('ul.tabs').tabs;
 });
 
@@ -19,7 +19,7 @@ function display_h1(result) {
       if (operations[operation]) {
         el.classList.add('active');
       } else {
-        el.classList.remove('active'); 
+        el.classList.remove('active');
       }
     });
   }
@@ -46,11 +46,11 @@ btn.addEventListener('click', function () {
 });
 
 var btn1 = document.getElementById('getLayout');
-btn1.addEventListener('click', function () {  
+btn1.addEventListener('click', function () {
   window.layoutApplied = true;
   chrome.tabs.query({ active: true }, function (tabs) {
     var tab = tabs[0];
-    tab_title = tab.title;    
+    tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
       file: 'js/getlayout.js'
     }, display_h1);
@@ -59,7 +59,7 @@ btn1.addEventListener('click', function () {
 });
 
 var btn2 = document.getElementById('outlinecomp');
-btn2.addEventListener('click', function () {  
+btn2.addEventListener('click', function () {
   window.componentApplied = true;
   chrome.tabs.query({ active: true }, function (tabs) {
     var tab = tabs[0];
@@ -86,7 +86,7 @@ btn3.addEventListener('click', function () {
 
 var btn4 = document.getElementById('getmeta');
 btn4.addEventListener('click', function () {
-  
+
   chrome.tabs.query({ active: true }, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
@@ -97,7 +97,7 @@ btn4.addEventListener('click', function () {
 
 });
 
-var btn6 = document.getElementById('AcdExpand');
+var btn6 = document.getElementById('acdExpand');
 btn6.addEventListener('click', function () {
   chrome.tabs.query({ active: true }, function (tabs) {
     var tab = tabs[0];
@@ -133,7 +133,7 @@ btn8.addEventListener('click', function () {
 
 });
 
-chrome.tabs.query({ active: true }, function(tab) {
+chrome.tabs.query({ active: true }, function (tab) {
   chrome.tabs.executeScript(tab.id, {
     file: 'js/getOperations.js'
   }, display_h1);
