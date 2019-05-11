@@ -1,3 +1,9 @@
+/*
+var x = document.getElementsByTagName("video")[0].getAttribute("data-video-id"); 
+var x = document.getElementsByTagName("iframe")[0].getAttribute("src"); 
+
+*/
+
 var x = document.getElementsByTagName("iframe");
 for (i = 0; i < x.length; i++) {
     var vid = x[i].getAttribute("src");

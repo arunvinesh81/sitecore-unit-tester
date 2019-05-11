@@ -33,3 +33,15 @@
   a.imageinfo, a.outlineLay, a.compname, a.outlinecomp, a.metainfo, a.linkInfo, a.vidInfo, a.expAcd {
     cursor: pointer;
   }
+  a.operation:after {
+    content: '✓';
+    display: none;
+    margin-left: 8px;
+  }
+  a.operation.active {
+    color: #4caf50;
+    font-weight: 700;
+  }
+  a.operation.active:after {
+    display: inline-block;
+  }

@@ -9,14 +9,27 @@ $(document).ready(function(){
 
 
 var tab_title = '';
-function display_h1(results) {
-  var result = '';
-  [].forEach.call(results, function (img) {
-    if (img) {
-      result += img.src + ': ' + img.alt + '\n';
-    }
-  });
-  document.querySelector("#id1").innerHTML = result;
+function display_h1(result) {
+  console.log(result);
+  if (result && result.length) {
+    var operations = result[0] || {};
+    var keys = Object.keys(operations);
+    keys.forEach((operation) => {
+      var el = document.querySelector('#' + operation);
+      if (operations[operation]) {
+        el.classList.add('active');
+      } else {
+        el.classList.remove('active'); 
+      }
+    });
+  }
+  // var result = '';
+  // [].forEach.call(results, function (img) {
+  //   if (img) {
+  //     result += img.src + ': ' + img.alt + '\n';
+  //   }
+  // });
+  // document.querySelector("#id1").innerHTML = result;
   // h1 = results;
   // document.querySelector("#id1").innerHTML = "<p>tab title: " + tab_title + "</p><p>dom h1: " + h1 + "</p>";
 }
@@ -73,6 +86,7 @@ btn3.addEventListener('click', function () {
 
 var btn4 = document.getElementById('getmeta');
 btn4.addEventListener('click', function () {
+  
   chrome.tabs.query({ active: true }, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
@@ -106,3 +120,21 @@ btn7.addEventListener('click', function () {
   });
 
 });
+
+var btn8 = document.getElementById('getLink');
+btn8.addEventListener('click', function () {
+  chrome.tabs.query({ active: true }, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getLink.js'
+    }, display_h1);
+  });
+
+});
+
+chrome.tabs.query({ active: true }, function(tab) {
+  chrome.tabs.executeScript(tab.id, {
+    file: 'js/getOperations.js'
+  }, display_h1);
+})
