@@ -133,6 +133,18 @@ btn8.addEventListener('click', function () {
 
 });
 
+var btn8 = document.getElementById('getvariant');
+btn8.addEventListener('click', function () {
+  chrome.tabs.query({ active: true }, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getvariant.js'
+    }, display_h1);
+  });
+
+});
+
 chrome.tabs.query({ active: true }, function (tab) {
   chrome.tabs.executeScript(tab.id, {
     file: 'js/getOperations.js'

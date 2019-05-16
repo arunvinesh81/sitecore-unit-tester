@@ -22,7 +22,7 @@ function applyComponentVariant() {
 
     var $div = document.createElement('div');
     $div.classList.add('dev-variant-info');
-    var cssText = 'position:absolute;padding:4px;background:rgba(0, 0, 0, 0.75);color:#fff;z-index:1001;';
+    var cssText = 'position:absolute;padding:4px;background:rgba(238, 110, 115, 0.7);color:#fff;z-index:1001;';
     var ids = {};
     var tops = {};
     Array.prototype.forEach.call(comp, function (element, index) {
