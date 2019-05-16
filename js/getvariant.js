@@ -17,7 +17,7 @@ function applyComponentVariant() {
     window.operations.getvariant = true;
 
 
-    var comp = document.querySelectorAll('.component', '.screen-title');
+    var comp = document.querySelectorAll('.component, .screen-title');
     var body = document.body;
 
     var $div = document.createElement('div');
@@ -34,16 +34,22 @@ function applyComponentVariant() {
         }
         var left = (rect.left + 'px');
         var pos = 'p-' + top + left;
+        var clessText = '';
+        if (element.classList.contains('screen-title')) {
+            clessText = element.classList.item(1);
+        } else {
+            clessText = element.classList.item(3);
+        }                    
         if (rect.width) {
             if (ids.hasOwnProperty(pos)) {
                 var eComp = document.querySelector('#' + ids[pos]);
                 if (eComp) {
-                    eComp.textContent += ', ' + element.classList.item(3);
+                    eComp.textContent += ', ' + clessText;
                 }
             } else {
                 div.id = 'compo-tip-' + index;
                 div.style.cssText = cssText + 'top:' + top + ';left:' + left;
-                div.textContent = element.classList.item(3);
+                div.textContent = clessText;
                 body.appendChild(div);
                 ids[pos] = 'compo-tip-' + index;
                 tops[top] = true;

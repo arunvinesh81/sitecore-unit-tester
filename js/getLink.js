@@ -5,7 +5,10 @@
 
 function revertLink() {
     if (window.operations.getLink) {
-
+        Array.prototype.forEach.call(document.querySelectorAll('.dev-link-info'),
+            function(element) {
+                element.remove();
+            });;
         window.operations.getLink = false;
     }
     return window.operations;
@@ -22,7 +25,7 @@ function applyLink() {
   var body = document.body;
   
   var $div = document.createElement('div');
-    $div.classList.add('dev-variant-info');
+    $div.classList.add('dev-link-info');
     var cssText = 'position:absolute;padding:4px;background:rgba(0, 0, 0, 0.75);color:#fff;z-index:1001;';
     var ids = {};
     var tops = {};
@@ -39,12 +42,12 @@ function applyLink() {
             if (ids.hasOwnProperty(pos)) {
                 var eComp = document.querySelector('' + ids[pos]);
                 if (eComp) {
-                    eComp.textContent += ', ' + element.urls[url].href;
+                    eComp.textContent += ', ' + element.href;
                 }
             } else {
                 div.id = 'compo-tip-' + index;
                 div.style.cssText = cssText + 'top:' + top + ';left:' + left;
-                div.textContent = element.urls[url].href;
+                div.textContent = element.href;
                 body.appendChild(div);
                 ids[pos] = 'compo-tip-' + index;
                 tops[top] = true;
