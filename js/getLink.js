@@ -38,16 +38,17 @@ function applyLink() {
         }
         var left = (rect.left + 'px');
         var pos = 'p-' + top + left;
+        var href = element.href.replace(/^http(.+)\.com/, '');
         if (rect.width) {
             if (ids.hasOwnProperty(pos)) {
                 var eComp = document.querySelector('' + ids[pos]);
                 if (eComp) {
-                    eComp.textContent += ', ' + element.href;
+                    eComp.textContent += ', ' + href;
                 }
             } else {
                 div.id = 'compo-tip-' + index;
                 div.style.cssText = cssText + 'top:' + top + ';left:' + left;
-                div.textContent = element.href;
+                div.textContent = href;
                 body.appendChild(div);
                 ids[pos] = 'compo-tip-' + index;
                 tops[top] = true;

@@ -30,7 +30,7 @@
     width: 600px;
   }
 
-  a.imageinfo, a.outlineLay, a.compname, a.outlinecomp, a.metainfo, a.linkInfo, a.vidInfo, a.expAcd {
+  a.imageinfo, a.outlineLay, a.compname, a.outlinecomp, a.metainfo, a.linkInfo, a.vidInfo, a.expAcd, a.getvariant {
     cursor: pointer;
   }
   a.operation:after {
