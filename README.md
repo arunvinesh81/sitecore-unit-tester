@@ -1,6 +1,6 @@
-# SiteCore Unit Tester 2.0 
+# Unit Tester for Web  
 
-This Chrome Extension is used to test pages which was created by CMS Sitecore Wep 2.0
+This Chrome Extension is used to test pages which was created by CMS Sitecore Wep 1.0 and 2.0.
 
 ## GENERAL
 
@@ -44,3 +44,19 @@ This Chrome Extension is used to test pages which was created by CMS Sitecore We
 
 ### Accordion Expand/Collapse
 1. Expand and Collapse the Accordion tab
+
+## FORMATTING
+
+### Bold
+1. Highlight the bold text into color text.
+
+### Italics
+1. Highlight the Italics text into color text.
+
+### Underline
+1. Highlight the Underline text into color text.
+
+## Entities
+
+### Symbols
+1. Highlight the Trademark and Register symbols
