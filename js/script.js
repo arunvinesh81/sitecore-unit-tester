@@ -35,7 +35,7 @@ function display_h1(result) {
 }
 var btn = document.getElementById('getImage');
 btn.addEventListener('click', function () {
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -48,7 +48,7 @@ btn.addEventListener('click', function () {
 var btn1 = document.getElementById('getLayout');
 btn1.addEventListener('click', function () {
   window.layoutApplied = true;
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -61,7 +61,7 @@ btn1.addEventListener('click', function () {
 var btn2 = document.getElementById('outlinecomp');
 btn2.addEventListener('click', function () {
   window.componentApplied = true;
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -73,7 +73,7 @@ btn2.addEventListener('click', function () {
 
 var btn3 = document.getElementById('getcomp');
 btn3.addEventListener('click', function () {
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -87,7 +87,7 @@ btn3.addEventListener('click', function () {
 var btn4 = document.getElementById('getmeta');
 btn4.addEventListener('click', function () {
 
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -99,7 +99,7 @@ btn4.addEventListener('click', function () {
 
 var btn6 = document.getElementById('acdExpand');
 btn6.addEventListener('click', function () {
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -111,7 +111,7 @@ btn6.addEventListener('click', function () {
 
 var btn7 = document.getElementById('getVid');
 btn7.addEventListener('click', function () {
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -123,7 +123,7 @@ btn7.addEventListener('click', function () {
 
 var btn8 = document.getElementById('getLink');
 btn8.addEventListener('click', function () {
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
@@ -135,7 +135,7 @@ btn8.addEventListener('click', function () {
 
 var btn8 = document.getElementById('getvariant');
 btn8.addEventListener('click', function () {
-  chrome.tabs.query({ active: true }, function (tabs) {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
