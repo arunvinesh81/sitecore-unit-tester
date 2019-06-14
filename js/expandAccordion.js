@@ -19,6 +19,15 @@ function toggleAccordion() {
     for (var i = 0; i < divs.length; i++) {
         divs1[i].classList.toggle('show');
     }
+    var divs2 = document.querySelectorAll('.panel');
+    for (var i = 0; i < divs2.length; i++) {
+        divs2[i].classList.toggle('active');
+    }
+
+    var divs3 = document.querySelectorAll('.panel-collapse');
+    for (var i = 0; i < divs3.length; i++) {
+        divs3[i].classList.toggle('in');
+    }
 }
 
 
