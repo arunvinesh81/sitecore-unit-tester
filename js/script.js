@@ -145,6 +145,42 @@ btn8.addEventListener('click', function () {
 
 });
 
+var btn9 = document.getElementById('getBold');
+btn9.addEventListener('click', function () {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getbold.js'
+    }, display_h1);
+  });
+
+});
+
+var btn10 = document.getElementById('getItalics');
+btn10.addEventListener('click', function () {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getitalics.js'
+    }, display_h1);
+  });
+
+});
+
+var btn11 = document.getElementById('getUnderline');
+btn11.addEventListener('click', function () {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getunderline.js'
+    }, display_h1);
+  });
+
+});
+
 chrome.tabs.query({ active: true }, function (tab) {
   chrome.tabs.executeScript(tab.id, {
     file: 'js/getOperations.js'
