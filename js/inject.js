@@ -43,7 +43,7 @@ function showImageInfo() {
     htr.appendChild(htd3);
     fragment.appendChild(htr);
 
-    [].forEach.call(document.querySelectorAll('main img'), function (img) {
+    [].forEach.call(document.querySelectorAll('.body-content img' , 'main img'), function (img) {
         var tr = $tr.cloneNode();
         var td1 = $td.cloneNode();
         var td2 = $td.cloneNode();
@@ -54,7 +54,7 @@ function showImageInfo() {
         image.src = img.src;
         td1.appendChild(image);
         td2.textContent = img.alt || 'No alt found';
-        td3.innerHTML = img.parentElement.dataset.src ? ('<pre><code>' + JSON.stringify(JSON.parse(img.parentElement.dataset.src), null, 2) + '</code></pre>') : 'No Data src found';
+        td3.innerHTML = img.parentElement.dataset.src  ? ('<pre><code>' + JSON.stringify(JSON.parse(img.parentElement.dataset.src), null, 2) + '</code></pre>') : 'No Data src found';
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);

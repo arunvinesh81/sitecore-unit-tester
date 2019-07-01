@@ -56,5 +56,8 @@ This Chrome Extension is used to test pages which was created by CMS Sitecore We
 ### Underline
 1. Highlight the Underline text into color text.
 
+### SuperScript
+1. Highlight the Superscript and footnote indicators.
+
 ### Symbols
 1. Highlight the Trademark and Register symbols

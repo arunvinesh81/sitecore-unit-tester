@@ -181,6 +181,30 @@ btn11.addEventListener('click', function () {
 
 });
 
+var btn12 = document.getElementById('getSup');
+btn12.addEventListener('click', function () {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getsup.js'
+    }, display_h1);
+  });
+
+});
+
+var btn13 = document.getElementById('getSymbols');
+btn13.addEventListener('click', function () {
+  chrome.tabs.query({ active: true, currentWindow: true}, function (tabs) {
+    var tab = tabs[0];
+    tab_title = tab.title;
+    chrome.tabs.executeScript(tab.id, {
+      file: 'js/getsymbols.js'
+    }, display_h1);
+  });
+
+});
+
 chrome.tabs.query({ active: true }, function (tab) {
   chrome.tabs.executeScript(tab.id, {
     file: 'js/getOperations.js'
