@@ -54,7 +54,7 @@ function showImageInfo() {
         image.src = img.src;
         td1.appendChild(image);
         td2.textContent = img.alt || 'No alt found';
-        td3.innerHTML = img.parentElement.dataset.src  ? ('<pre><code>' + JSON.stringify(JSON.parse(img.parentElement.dataset.src), null, 2) + '</code></pre>') : 'No Data src found';
+        td3.innerHTML = img.parentElement.dataset.src || img.dataset.src ? ('<pre><code>' + JSON.stringify(JSON.parse(img.parentElement.dataset.src || img.dataset.src), null, 2) + '</code></pre>') : 'No Data src found';
         tr.appendChild(td1);
         tr.appendChild(td2);
         tr.appendChild(td3);

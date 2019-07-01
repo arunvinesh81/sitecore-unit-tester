@@ -22,7 +22,7 @@ function applyUnderline() {
     }
     window.operations.getUnderline = true;
     var u = [],
-    els = document.getElementsByTagName('span'),
+    els = document.querySelectorAll('main span, .body-content span'),
     i = 0;
     for (i = 0; i < els.length; i++) {
         if (els[i].hasAttribute("style='text-decoration:underline'")) {
@@ -31,12 +31,7 @@ function applyUnderline() {
         els[i].style.color = "white";
         els[i].style.backgroundColor = "green";
     }
-
-    /*var u = document.querySelectorAll("span[style*='text-decoration:underline']");
-    for (i = 0; i < u.length; i++) {
-        u[i].style.color = "white";
-        u[i].style.backgroundColor = "red";
-    }*/
+    
     return window.operations;
 }
 
