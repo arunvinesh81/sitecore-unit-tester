@@ -199,7 +199,7 @@ btn13.addEventListener('click', function () {
     var tab = tabs[0];
     tab_title = tab.title;
     chrome.tabs.executeScript(tab.id, {
-      file: 'js/getsymbols.js'
+      file: 'js/getsymbol.js'
     }, display_h1);
   });
 

@@ -1,64 +1,64 @@
-function revertComponentVariant() {
-    if (window.operations.getvariant) {
+function revertSymbols() {
+    if (window.operations.getsymbols) {
         var els = document.querySelectorAll('.dev-variant-info');
         for (el of els) {
             el.remove();
         }
-        window.operations.getvariant = false;
+        window.operations.getsymbols = false;
     }
     return window.operations;
 }
 
-function applyComponentVariant() {
-    window.operations = window.operations || {};
-    if (window.operations.getvariant) {
-        return revertComponentVariant();
+function findAndReplace(searchText, replacement, searchNode) {
+    if (!searchText || typeof replacement === 'undefined') {
+        // Throw error here if you want...
+        return;
     }
-    window.operations.getvariant = true;
-
-
-    var comp = document.querySelectorAll('.component, .screen-title');
-    var body = document.body;
-
-    var $div = document.createElement('div');
-    $div.classList.add('dev-variant-info');
-    var cssText = 'position:absolute;padding:4px;background:rgba(0, 0, 0, 0.75);color:#fff;z-index:1001;';
-    var ids = {};
-    var tops = {};
-    Array.prototype.forEach.call(comp, function (element, index) {
-        var div = $div.cloneNode();
-        var rect = element.getBoundingClientRect();
-        var top = (rect.top + window.scrollY - 32 + 'px');
-        if (tops.hasOwnProperty(top)) {
-            top = (parseInt(top.replace('px', '')) + 32) + 'px';
+    var regex = typeof searchText === 'string' ?
+                new RegExp(searchText, 'g') : searchText,
+        childNodes = (searchNode || document.body).childNodes,
+        cnLength = childNodes.length,
+        excludes = 'html,head,style,title,link,meta,script,object,iframe';
+    while (cnLength--) {
+        var currentNode = childNodes[cnLength];
+        if (currentNode.nodeType === 1 &&
+            (excludes + ',').indexOf(currentNode.nodeName.toLowerCase() + ',') === -1) {
+            arguments.callee(searchText, replacement, currentNode);
         }
-        var left = (rect.left + 'px');
-        var pos = 'p-' + top + left;
-        var clessText = '';
-        if (element.classList.contains('screen-title')) {
-            clessText = element.classList.item(1);
-        } else {
-            clessText = element.classList.item(3);
-        }                    
-        if (rect.width) {
-            if (ids.hasOwnProperty(pos)) {
-                var eComp = document.querySelector('#' + ids[pos]);
-                if (eComp) {
-                    eComp.textContent += ', ' + clessText;
+        if (currentNode.nodeType !== 3 || !regex.test(currentNode.data) ) {
+            continue;
+        }
+        var parent = currentNode.parentNode,
+            frag = (function(){
+                var html = currentNode.data.replace(regex, replacement),
+                    wrap = document.createElement('div'),
+                    frag = document.createDocumentFragment();
+                wrap.innerHTML = html;
+                while (wrap.firstChild) {
+                    frag.appendChild(wrap.firstChild);
                 }
-            } else {
-                div.id = 'compo-tip-' + index;
-                div.style.cssText = cssText + 'top:' + top + ';left:' + left;
-                div.textContent = clessText;
-                body.appendChild(div);
-                ids[pos] = 'compo-tip-' + index;
-                tops[top] = true;
-            }
-        }
-    });
+                return frag;
+            })();
+        parent.insertBefore(frag, currentNode);
+        parent.removeChild(currentNode);
+    }
+}
+
+function applySymbols() {
+    window.operations = window.operations || {};
+    if (window.operations.getsymbols) {
+        return revertSymbols();
+    }
+    window.operations.getsymbols = true;
+
+    var searchMatch = document.referrer.match(/[?&]q=([^&]+)/),
+    searchTerm = searchMatch && searchMatch[1];
+        if (searchTerm) {
+         findAndReplace('(™|®|&trade;)', function(term){ return '<span class="keyword">' + term + '</span>'; });
+        }       
 
     return window.operations;
 }
 
 
-applyComponentVariant();
+applySymbols();

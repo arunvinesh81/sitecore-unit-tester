@@ -20,11 +20,11 @@ function showImageInfo() {
     // just place a div at top right
     var body = document.querySelector('body');
     var table = document.createElement('table');
-    table.id = 'imgInfoTable';
+    table.id = 'imgInfoTable'
     table.style.cssText = 'position:absolute;top:0;left:0;z-index:1001;background:#fff;border:2px solid #ee6e73';
     var tbody = document.createElement('tbody');
     var $tr = document.createElement('tr');
-    $tr.style.cssText = 'border-bottom: 1px solid #ee6e73;';
+    $tr.style.cssText = 'border-bottom: 1px solid #ee6e73; background-color: antiquewhite;';
     var $td = document.createElement('td');
     $td.style.cssText = 'border-right: 1px solid #ee6e73;padding: 15px;';
     var fragment = document.createDocumentFragment();
@@ -35,9 +35,9 @@ function showImageInfo() {
     var htd2 = $td.cloneNode();
     var htd3 = $td.cloneNode();
 
-    htd1.textContent = 'Image'
-    htd2.textContent = 'Alt'
-    htd3.textContent = 'Data src'
+    htd1.textContent = 'IMAGE'
+    htd2.textContent = 'ALT'
+    htd3.textContent = 'DATA SRC'
     htr.appendChild(htd1);
     htr.appendChild(htd2);
     htr.appendChild(htd3);
